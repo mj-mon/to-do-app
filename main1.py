@@ -1,7 +1,12 @@
 # Sec: 7 Day: 7
 # List-Comprehensions
 # (71)
+#import functions
+import time
 
+now = time.strftime("%b %d, %Y %H:%M:%S")
+print("The time is below:")
+print("It is", now)
 
 # removing backslash char from the list- w/ 1)loops and w/ 2)list-comprehensions
 while True:
