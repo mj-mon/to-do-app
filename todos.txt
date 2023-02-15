@@ -1,0 +1,4 @@
+clean
+study
+grocery
+meet
