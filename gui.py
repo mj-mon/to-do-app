@@ -19,9 +19,11 @@ window = sg.Window('My TO-DO App', layout=[[label ], [input_box, add_button]])
 # PySimpleGUI => Pizza shop, Window("My to-do App") => actual pizza instance, "My to do App" => what pizza do you want
 
 # layout is an argument and it expects a list... a list of object instances, buttons, textboxes.
-# [[..]] => the items you put in inner square brackets will be placed in one row
+# [[_._._]] => the items you put in inner square brackets will be placed in one row
 # [[][]] => two rows with one item each.
 # [[_ , _], [_]]  => row1 col2, row2 col1.
+# [[_],[_,_]] => roq1 col1, row2 col2
+# [[_],[_],[_]] => 2 rows > list of three lists.
 
 # nothing happens when you click on button, bcs you havn't added any actions/functions.Create
 window.read()
