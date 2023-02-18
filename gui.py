@@ -7,11 +7,13 @@ import PySimpleGUI as sg
 
 label = sg.Text("Type in a to-do")
 # creates a text label on window... its not a string, but takes in a text instance
-input_box = sg.InputText(tooltip="Enter todo")
+input_box = sg.InputText(tooltip="Enter todo", key="todo")
 # we have created these somewhere and not connected it to windows
 add_button =sg.Button("Add")
 
-window = sg.Window('My TO-DO App', layout=[[label ], [input_box, add_button]])
+window = sg.Window('My TO-DO App',
+                   layout=[[label ], [input_box, add_button]],
+                   font=('Helvetica', 20))
 #creates window instance with elements
 # Cafe-- In cafe you order a pizza .. but it makes coffee instances and tea, but don't make pizzas.
 # they offera service.. they order a pizza from third party..from a pizza shop nearby.
@@ -26,7 +28,23 @@ window = sg.Window('My TO-DO App', layout=[[label ], [input_box, add_button]])
 # [[_],[_],[_]] => 2 rows > list of three lists.
 
 # nothing happens when you click on button, bcs you havn't added any actions/functions.Create
-window.read()
+#event = window.read()
+while True:
+    # While loop --> so the app d/n close on pressing add button
+    event, values = window.read()
+    #method read returns tuple
+    print(event)
+    print(values)
 # it displays window on the screen --- its a method not a function
+    match event:
+        case "Add":
+            todos = functions.get_todos()
+            new_todo = values['todo'] + "\n"
+            todos.append(new_todo)
+            functions.write_todos(todos)
+        case sg.WIN_CLOSED:
+            break
+        #new list will be written in the file
+
 window.close()
 
