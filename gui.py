@@ -10,9 +10,12 @@ label = sg.Text("Type in a to-do")
 input_box = sg.InputText(tooltip="Enter todo", key="todo")
 # we have created these somewhere and not connected it to windows
 add_button =sg.Button("Add")
+list_box = sg.Listbox(values=functions.get_todos(), key='todos',
+                      enable_events=True, size=[45, 10])
+edit_button = sg.Button("Edit")
 
 window = sg.Window('My TO-DO App',
-                   layout=[[label ], [input_box, add_button]],
+                   layout=[[label ], [input_box, add_button], [list_box, edit_button]],
                    font=('Helvetica', 20))
 #creates window instance with elements
 # Cafe-- In cafe you order a pizza .. but it makes coffee instances and tea, but don't make pizzas.
@@ -34,7 +37,11 @@ while True:
     event, values = window.read()
     #method read returns tuple
     print(event)
+    # event = todos
+
     print(values)
+    # value = dictionary
+    # user has selected the values currently
 # it displays window on the screen --- its a method not a function
     match event:
         case "Add":
