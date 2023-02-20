@@ -1,6 +1,7 @@
 clean
 study
-grocery
-meet
-workout
+Buy plantsworkout
 Master Python
+clean room
+Good Orderlast todo
+and lastly

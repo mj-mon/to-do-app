@@ -36,19 +36,53 @@ while True:
     # While loop --> so the app d/n close on pressing add button
     event, values = window.read()
     #method read returns tuple
-    print(event)
+    print(1, event)
     # event = todos
 
-    print(values)
+    print(2, values)
     # value = dictionary
     # user has selected the values currently
 # it displays window on the screen --- its a method not a function
+    print(3, values['todos'])
+    # ['todos'] is a list.
     match event:
         case "Add":
             todos = functions.get_todos()
             new_todo = values['todo'] + "\n"
             todos.append(new_todo)
             functions.write_todos(todos)
+            window['todos'].update(values=todos)
+            # we point to the listbox instance and point to the
+            # ...method of that listbox instance and say values=todos
+            # the updated todos will have new_todos added
+
+        case "Edit":
+            todo_to_edit = values['todos'][0]
+            # the dictionary is values which we printed
+            # we want to get ['ihhihjhdjh\n'] > we point to
+            # todos key. to get actual string [0]
+
+            new_todo = values['todo']
+
+            todos = functions.get_todos()
+            # to replace existing item in the list
+            index = todos.index(todo_to_edit)
+            # to update todos list with new to-do
+            todos[index] = new_todo
+            functions.write_todos(todos)
+            # write_todos modifies todos.txt files
+
+            window['todos'].update(values=todos)
+            # point to list box key [todos]
+            # will give us the list box instance
+
+    # when we select a list item from GUI it should reflect in the text box
+    # when we select  a to-do item ex: clean --> the event is todos that has
+        # the key of the Listbox key='todos'
+    # therefore in match case we want to capture that.
+
+        case 'todos':
+            window['todo'].update(value=values['todos'][0])
         case sg.WIN_CLOSED:
             break
         #new list will be written in the file
